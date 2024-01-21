@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 files_dict = {}
-for filename in os.listdir("dataset/"):
+for filename in os.listdir("Dataset/"):
     if filename.endswith(".csv"):
         df = pd.read_csv(os.path.join("Dataset/", filename)).iloc[:,1:]
         files_dict[filename[:-4]] = df

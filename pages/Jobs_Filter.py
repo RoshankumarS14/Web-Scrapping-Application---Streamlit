@@ -24,9 +24,6 @@ else:
         dfs.append(files_dict[file])
 
 df = pd.concat(dfs,ignore_index=True)
-st.write(df)
-st.write(df.columns)
-st.write(df['jobTitle'].isnull().sum())
 df.index = list(range(1,len(df)+1))
 
 # Search box

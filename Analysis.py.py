@@ -31,14 +31,14 @@ PAGES = {
 if "selected_page" not in st.session_state:
     st.session_state["selected_page"]=False
 
-# Create an option menu in the main section
-st.session_state["selected_page"] = option_menu("", list(PAGES.keys()),icons=["list-task"],
-    menu_icon="cast", default_index=0, orientation="horizontal")
+# # Create an option menu in the main section
+# st.session_state["selected_page"] = option_menu("", list(PAGES.keys()),icons=["list-task"],
+#     menu_icon="cast", default_index=0, orientation="horizontal")
 
-if st.session_state["selected_page"]:
-    if st.session_state["selected_page"] != "Analysis":
-        switch_page(PAGES[st.session_state["selected_page"]])
-    st.rerun()
+# if st.session_state["selected_page"]:
+#     if st.session_state["selected_page"] != "Analysis":
+#         switch_page(PAGES[st.session_state["selected_page"]])
+#     st.rerun()
         
 files_dict = {}
 for filename in os.listdir("Dataset/"):

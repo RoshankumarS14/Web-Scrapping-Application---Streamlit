@@ -13,13 +13,14 @@ selected_df = st.multiselect("Select the datasets to analyse:",["All"]+list(file
 dfs = []
 
 if selected_df==["All"]:
-    for df in files_dict.keys():
-        dfs.append(files_dict[df])
+    for file in files_dict.keys():
+        dfs.append(files_dict[file])
 else:
-    for df in selected_df:
-        dfs.append(files_dict[df])
-st.write(df['jobTitle'].isnull().sum())
+    for file in selected_df:
+        dfs.append(files_dict[file])
+
 df = pd.concat(dfs,ignore_index=True)
+st.write(df['jobTitle'].isnull().sum())
 df.index = list(range(1,len(df)+1))
 
 # Search box

@@ -54,8 +54,8 @@ def extract_salary(salary):
         timeframe="month"
     elif salary.count("year")>0:
         timeframe="year"
-    # else:
-    #     return np.nan
+    else:
+        return np.nan
     salary = salary.replace(" ","")
     salary = salary.replace("$","")
     salary = salary.replace(",","")

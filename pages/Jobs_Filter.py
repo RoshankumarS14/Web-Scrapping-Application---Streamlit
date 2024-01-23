@@ -13,16 +13,15 @@ selected_df = st.multiselect("Select the datasets to analyse:",["All"]+list(file
 dfs = []
 
 if selected_df==["All"]:
-    st.write("Entered IF")
     for df in files_dict.keys():
         dfs.append(files_dict[df])
 else:
-    st.write("Entered ELSE")
     for df in selected_df:
         dfs.append(files_dict[df])
 
 df = pd.concat(dfs,ignore_index=True)
 df.index = list(range(1,len(df)+1))
+df['jobTitle'].dropna(inplace=True)
 
 # Search box
 keyword = st.text_input('Enter a keyword to search for jobs')

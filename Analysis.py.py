@@ -101,7 +101,7 @@ if st.session_state["analyze"]:
         st.dataframe(pd.DataFrame(pd.Series(words).value_counts()).rename(columns={0:"Count"}))
     with c2:
         st.subheader("Salary trend")
-        date = [i[12:-1] for i in list(files_dict.keys())]
+        date = [i[11:-1] for i in list(files_dict.keys())]
         st.write(date)
     
 

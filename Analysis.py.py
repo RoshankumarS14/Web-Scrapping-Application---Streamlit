@@ -90,13 +90,17 @@ if len(dfs)!=0:
     st.session_state["analyze"] = st.button("Analyze Job Titles!")
 
 if st.session_state["analyze"]:
-    st.subheader("Words Frequency")
-    words = []
-    for index in df.index:
-        words.append(df.loc[index,"jobTitle"].split())
-    words = [i for j in words for i in j]
-    words = [i.lower() for i in words]
-    st.dataframe(pd.DataFrame(pd.Series(words).value_counts()).rename(columns={0:"Count"}))
+    c1,c2 = st.columns([1,1])
+    with c1:
+        st.subheader("Words Frequency")
+        words = []
+        for index in df.index:
+            words.append(df.loc[index,"jobTitle"].split())
+        words = [i for j in words for i in j]
+        words = [i.lower() for i in words]
+        st.dataframe(pd.DataFrame(pd.Series(words).value_counts()).rename(columns={0:"Count"}))
+    with c2:
+        st.subheader("Salary trend")
     
 
     

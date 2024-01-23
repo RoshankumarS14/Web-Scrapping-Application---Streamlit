@@ -5,7 +5,7 @@ import pandas as pd
 files_dict = {}
 for filename in os.listdir("Dataset/"):
     if filename.endswith(".csv"):
-        df = pd.read_csv(os.path.join("Dataset/", filename)).iloc[:,1:]
+        df = pd.read_csv(os.path.join("Dataset/", filename)).iloc[:,:]
         files_dict[filename[:-4]] = df
 
 selected_df = st.multiselect("Select the datasets to analyse:",["All"]+list(files_dict.keys()),default=["All"])

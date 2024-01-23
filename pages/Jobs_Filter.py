@@ -21,7 +21,6 @@ else:
 
 df = pd.concat(dfs,ignore_index=True)
 df.index = list(range(1,len(df)+1))
-df['jobTitle'].dropna(inplace=True)
 
 # Search box
 keyword = st.text_input('Enter a keyword to search for jobs')
@@ -29,6 +28,7 @@ location = st.multiselect("State:",["All"]+list(df["companyLocation"].unique()))
 st.session_state["Search"] = st.button("Search!")
 
 if st.session_state["Search"]:
+    df['jobTitle'].dropna(inplace=True)
     st.write(df['jobTitle'].isnull().sum())
     if not location or "All" in location:
         filtered_df = df[df['jobTitle'].str.contains(keyword, case=False)]

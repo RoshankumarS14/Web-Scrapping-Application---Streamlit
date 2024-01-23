@@ -34,10 +34,3 @@ if st.session_state["Search"]:
     df_html = filtered_df.to_html(classes='table table-striped',index=False)
     df_html = df_html.replace('<table ','<table style="text-align:right; margin-bottom:40px; margin-top:50px; width:95%;" ')
     st.markdown(df_html,unsafe_allow_html=True)
-    
-    # Filter jobs
-    filtered_jobs = [job for job in jobs if keyword.lower() in job.lower()]
-    
-    # Display jobs
-    for job in filtered_jobs:
-        st.write(job)

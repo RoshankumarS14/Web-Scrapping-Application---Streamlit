@@ -2,3 +2,5 @@ streamlit
 requests
 stqdm
 pandas
+streamlit-option-menu
+streamlit-extras

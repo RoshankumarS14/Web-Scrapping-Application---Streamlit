@@ -32,7 +32,7 @@ location = st.multiselect("State:",["All"]+list(df["companyLocation"].unique()))
 st.session_state["Search"] = st.button("Search!")
 
 if st.session_state["Search"]:
-    df.drop(df['jobTitle'].isnull().index,inplace=True)
+    
     if not location or "All" in location:
         filtered_df = df[df['jobTitle'].str.contains(keyword, case=False)]
     else:

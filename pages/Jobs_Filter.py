@@ -13,9 +13,11 @@ selected_df = st.multiselect("Select the datasets to analyse:",["All"]+list(file
 dfs = []
 
 if selected_df=="All":
+    st.write("Entered IF")
     for df in files_dict.keys():
         dfs.append(files_dict[df])
 else:
+    st.write("Entered ELSE")
     for df in selected_df:
         dfs.append(files_dict[df])
 

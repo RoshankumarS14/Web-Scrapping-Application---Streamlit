@@ -103,8 +103,7 @@ if st.session_state["analyze"]:
         st.subheader("Salary trend")
         date = [i[11:-1] for i in list(files_dict.keys())]
         mean_salary = [df["Salary"].dropna().apply(lambda a : extract_salary(a) if a!="-" else np.nan).mean() for df in list(files_dict.values())]
-        st.write(date)
-        st.write(mean_salary)
+        st.dataframe(pd.DataFrame({"Date":dates,"Average Yearly Salary":mean_salary}))
     
 
     

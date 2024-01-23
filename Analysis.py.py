@@ -83,6 +83,7 @@ if "analyze" not in st.session_state:
 
 if len(dfs)!=0:
     df = pd.concat(dfs,ignore_index=True)
+    df["Salary"].fillna("-",inplace=True)
     df["Salary (yearly)"] = df["Salary"].apply(lambda a : extract_salary(a) if a!="-" else np.nan)
     df.index = list(range(1,len(df)+1))
     st.dataframe(df)

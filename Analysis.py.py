@@ -1,14 +1,45 @@
 import streamlit as st
 import pandas as pd
 import os
+from streamlit_option_menu import option_menu
+from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(
     page_title="Job Analysis",
-    page_icon="📈🌐",
+    page_icon="📈",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
 
+# st.markdown(
+#     """
+# <style>
+#     [data-testid="collapsedControl"] {
+#         display: none
+#     }
+# </style>
+# """,
+#     unsafe_allow_html=True,
+# )
+
+# Define your pages
+PAGES = {
+    "Analysis": "streamlit app",
+    "Scrap Jobs": "web scrapper"
+}
+
+if "selected_page" not in st.session_state:
+    st.session_state["selected_page"]=False
+
+# Create an option menu in the main section
+st.session_state["selected_page"] = option_menu("", list(PAGES.keys()),icons=["list-task"],
+    menu_icon="cast", default_index=0, orientation="horizontal")
+
+if st.session_state["selected_page"]:
+    if st.session_state["selected_page"] != "Analysis":
+        switch_page(PAGES[st.session_state["selected_page"]])
+    st.rerun()
+        
 files_dict = {}
 for filename in os.listdir("Dataset/"):
     if filename.endswith(".csv"):

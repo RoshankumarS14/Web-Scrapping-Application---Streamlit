@@ -15,8 +15,9 @@ dfs = []
 if selected_df=="All":
     for df in files_dict.keys():
         dfs.append(files_dict[df])
-for df in selected_df:
-    dfs.append(files_dict[df])
+else:
+    for df in selected_df:
+        dfs.append(files_dict[df])
 
 df = pd.concat(dfs,ignore_index=True)
 df.index = list(range(1,len(df)+1))

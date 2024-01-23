@@ -8,10 +8,13 @@ for filename in os.listdir("Dataset/"):
         df = pd.read_csv(os.path.join("Dataset/", filename)).iloc[:,1:]
         files_dict[filename[:-4]] = df
 
-selected_df = st.multiselect("Select the datasets to analyse:",["All"]+list(files_dict.keys()),default=list(files_dict.keys())[-1])
+selected_df = st.multiselect("Select the datasets to analyse:",["All"]+list(files_dict.keys()),default=["All"])
 
 dfs = []
 
+if selected_df=="All":
+    for df in files_dict.keys():
+        dfs.append(files_dict[df])
 for df in selected_df:
     dfs.append(files_dict[df])
 

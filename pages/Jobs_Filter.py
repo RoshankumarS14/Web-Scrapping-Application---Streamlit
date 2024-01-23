@@ -18,7 +18,7 @@ if selected_df==["All"]:
 else:
     for df in selected_df:
         dfs.append(files_dict[df])
-
+st.write(df['jobTitle'].isnull().sum())
 df = pd.concat(dfs,ignore_index=True)
 df.index = list(range(1,len(df)+1))
 
@@ -29,7 +29,6 @@ st.session_state["Search"] = st.button("Search!")
 
 if st.session_state["Search"]:
     df.drop(df['jobTitle'].isnull().index,inplace=True)
-    st.write(df['jobTitle'].isnull().sum())
     if not location or "All" in location:
         filtered_df = df[df['jobTitle'].str.contains(keyword, case=False)]
     else:

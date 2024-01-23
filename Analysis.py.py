@@ -102,7 +102,9 @@ if st.session_state["analyze"]:
     with c2:
         st.subheader("Salary trend")
         date = [i[11:-1] for i in list(files_dict.keys())]
+        median_salary = [df["Salary"].apply(lambda a : extract_salary(a) if a!="-" else np.nan).avg() for df in list(files_dict.values())]
         st.write(date)
+        st.write(median_salary)
     
 
     

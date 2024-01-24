@@ -69,7 +69,7 @@ files_dict = {}
 for filename in os.listdir("Dataset/"):
     if filename.endswith(".csv"):
         df = pd.read_csv(os.path.join("Dataset/", filename))
-        df.drop(["Unnamed: 0"],axis=1,inplace=True)
+        df.drop(["Unnamed:0"],axis=1,inplace=True)
         files_dict[filename[:-4]] = df
 
 selected_df = st.multiselect("Select the datasets to analyse:",files_dict.keys())

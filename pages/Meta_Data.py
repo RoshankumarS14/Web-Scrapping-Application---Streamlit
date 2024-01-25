@@ -15,7 +15,8 @@ st.subheader("Salary")
 st.write(df[df["jobTitle"]==st.session_state["job"]]["Salary (Metadata)"].values[0])
 
 st.subheader("Benefits")
-st.write(df[df["jobTitle"]==st.session_state["job"]]["Benefits (Metadata)"].values[0])
+benefits = df[df["jobTitle"]==st.session_state["job"]]["Benefits (Metadata)"].values[0].replace('\n', '<br>')
+st.markdown(benefits,unsafe_allow_html=True)
 
 st.subheader("Description")
-st.write(df[df["jobTitle"]==st.session_state["job"]]["Description (Metadata)"].values[0])
+st.markdown(df[df["jobTitle"]==st.session_state["job"]]["Description (Metadata)"].values[0].replace('\n', '<br>'))

@@ -12,10 +12,10 @@ st.subheader("Job Title")
 st.write(st.session_state["job"])
 
 st.subheader("Company")
-st.write(st.session_state["companyName"])
+st.write(df[df["jobTitle"]==st.session_state["job"]]["companyName"].values[0])
 
 st.subheader("Location")
-st.write(st.session_state["companyLocation"])
+st.write(df[df["jobTitle"]==st.session_state["job"]]["companyLocation"].values[0])
 
 st.subheader("Salary")
 st.write(df[df["jobTitle"]==st.session_state["job"]]["Salary (Metadata)"].values[0])

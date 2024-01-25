@@ -19,5 +19,5 @@ benefits = df[df["jobTitle"]==st.session_state["job"]]["Benefits (Metadata)"].va
 st.markdown(benefits,unsafe_allow_html=True)
 
 st.subheader("Description")
-description = df[df["jobTitle"]==st.session_state["job"]]["Description (Metadata)"].values[0].replace('\n', '<br>')
+description = df[df["jobTitle"]==st.session_state["job"]]["Description (Metadata)"].values[0].replace('\n', '<br>').replace("$","")
 st.markdown(description,unsafe_allow_html=True)

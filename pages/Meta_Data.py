@@ -18,4 +18,4 @@ st.subheader("Benefits")
 st.write(df[df["jobTitle"]==st.session_state["job"]]["Benefits (Metadata)"].values[0])
 
 st.subheader("Description")
-st.write(df[df["jobTitle"]==st.session_state["job"]]["Description  (Metadata)"].values[0])
+st.write(df[df["jobTitle"]==st.session_state["job"]]["Description (Metadata)"].values[0])

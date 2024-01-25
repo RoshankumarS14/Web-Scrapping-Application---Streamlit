@@ -39,6 +39,6 @@ if st.session_state["Search"]:
         # Filter DataFrame based on jobTitle and companyLocation
         filtered_df = df[(df['jobTitle'].str.contains(keyword, case=False)) & (df['companyLocation'].isin(location))]
         
-    df_html = filtered_df[["jobTitle","companyLocation","Salary"]].to_html(classes='table table-striped',index=False)
+    df_html = filtered_df[["jobTitle","companyName","companyLocation","Salary"]].to_html(classes='table table-striped',index=False)
     df_html = df_html.replace('<table ','<table style="text-align:right; margin-bottom:40px; margin-top:50px; width:95%;" ')
     st.markdown(df_html,unsafe_allow_html=True)

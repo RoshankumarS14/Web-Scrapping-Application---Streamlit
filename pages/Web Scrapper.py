@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 url = "https://api.scrapingdog.com/indeed"
-api_key = "65a538d6446d2a02612a5980"
+api_key = "65b27bd80ff088077baa70cb"
 
 if "Scrape" not in st.session_state:
     st.session_state["Scrape"] = False

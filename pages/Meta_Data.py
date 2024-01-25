@@ -6,7 +6,7 @@ df = pd.read_csv("Sample (Meta Data).csv")
 if "job" not in st.session_state:
     st.session_state["job"] = ""
 
-st.session_state["job"] = st.select_box("Select the Job Title:",df["jobTitle"])
+st.session_state["job"] = st.selectbox("Select the Job Title:",df["jobTitle"])
 
 st.subheader("Job Title")
 st.write(st.session_state["job"])

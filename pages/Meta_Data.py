@@ -11,6 +11,12 @@ st.session_state["job"] = st.selectbox("Select the Job Title:",df["jobTitle"])
 st.subheader("Job Title")
 st.write(st.session_state["job"])
 
+st.subheader("Company")
+st.write(st.session_state["companyName"])
+
+st.subheader("Location")
+st.write(st.session_state["companyLocation"])
+
 st.subheader("Salary")
 st.write(df[df["jobTitle"]==st.session_state["job"]]["Salary (Metadata)"].values[0])
 

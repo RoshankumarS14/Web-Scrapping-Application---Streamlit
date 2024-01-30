@@ -20,6 +20,9 @@ client = asana.Client.access_token(personal_access_token)
 
 if "selected_page" not in st.session_state:
     st.session_state["selected_page"]=False
+
+if "range" not in st.session_state:
+    st.session_state["range"] = (company_counts["count"].min(), company_counts["count"].max())
     
 if "jobs_data" not in st.session_state:
     tasks = client.tasks.get_tasks_for_section(section_gid=section_id, opt_fields='name')
@@ -63,20 +66,24 @@ if len(dfs)!=0:
 
 if st.session_state["analyze"]:
     c1,c2 = st.columns([1,1,])
-    # words = []
-    # for index in df.index:
-    #     words.append(df.loc[index,"jobTitle"].split())
-    # words = [i for j in words for i in j]
-    # words = [i.lower() for i in words]
+    words = []
+    for index in df.index:
+        words.append(df.loc[index,"jobTitle"].split())
+    words = [i for j in words for i in j]
+    words = [i.lower() for i in words]
     with c1:
-        # st.subheader("Words Frequency")
-        # st.dataframe(pd.DataFrame(pd.Series(words).value_counts()).rename(columns={0:"Count"}))
+        st.subheader("Words Frequency")
+        st.dataframe(pd.DataFrame(pd.Series(words).value_counts()).rename(columns={0:"Count"}))
         pass
     with c2:
         st.subheader("Companies")
         company_counts = pd.DataFrame(df["companyName"].value_counts())
-        st.session_state["range"] = st.slider("Select range for count of companies",company_counts["count"].min(),company_counts["count"].max(),(company_counts["count"].min(),company_counts["count"].max()))
-        st.dataframe(company_counts)
+        st.session_state["range"] = st.slider("Select range for count of companies",
+                                              company_counts["count"].min(), company_counts["count"].max(),
+                                              st.session_state["range"])
+        filtered_companies = company_counts[(company_counts["count"] >= st.session_state["range"][0]) & 
+                                            (company_counts["count"] <= st.session_state["range"][1])]
+        st.dataframe(filtered_companies)
                                       
     
 

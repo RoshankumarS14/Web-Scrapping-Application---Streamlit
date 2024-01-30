@@ -4,4 +4,4 @@ stqdm
 pandas
 streamlit-option-menu
 streamlit-extras
-asana
+asana==3.2.2

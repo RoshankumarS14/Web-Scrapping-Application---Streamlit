@@ -4,3 +4,4 @@ stqdm
 pandas
 streamlit-option-menu
 streamlit-extras
+asana

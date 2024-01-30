@@ -63,14 +63,15 @@ if len(dfs)!=0:
 
 if st.session_state["analyze"]:
     c1,c2 = st.columns([1,1,])
-    words = []
-    for index in df.index:
-        words.append(df.loc[index,"jobTitle"].split())
-    words = [i for j in words for i in j]
-    words = [i.lower() for i in words]
+    # words = []
+    # for index in df.index:
+    #     words.append(df.loc[index,"jobTitle"].split())
+    # words = [i for j in words for i in j]
+    # words = [i.lower() for i in words]
     with c1:
-        st.subheader("Words Frequency")
-        st.dataframe(pd.DataFrame(pd.Series(words).value_counts()).rename(columns={0:"Count"}))
+        # st.subheader("Words Frequency")
+        # st.dataframe(pd.DataFrame(pd.Series(words).value_counts()).rename(columns={0:"Count"}))
+        pass
     with c2:
         st.subheader("Companies")
         company_counts = pd.DataFrame(df["companyName"].value_counts())

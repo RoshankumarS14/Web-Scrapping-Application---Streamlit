@@ -20,9 +20,6 @@ client = asana.Client.access_token(personal_access_token)
 
 if "selected_page" not in st.session_state:
     st.session_state["selected_page"]=False
-
-if "range" not in st.session_state:
-    st.session_state["range"] = (company_counts["count"].min(), company_counts["count"].max())
     
 if "jobs_data" not in st.session_state:
     tasks = client.tasks.get_tasks_for_section(section_gid=section_id, opt_fields='name')
@@ -78,9 +75,14 @@ if st.session_state["analyze"]:
     with c2:
         st.subheader("Companies")
         company_counts = pd.DataFrame(df["companyName"].value_counts())
+        
+        if "range" not in st.session_state:
+            st.session_state["range"] = (company_counts["count"].min(), company_counts["count"].max())
+
         st.session_state["range"] = st.slider("Select range for count of companies",
                                               company_counts["count"].min(), company_counts["count"].max(),
                                               st.session_state["range"])
+
         filtered_companies = company_counts[(company_counts["count"] >= st.session_state["range"][0]) & 
                                             (company_counts["count"] <= st.session_state["range"][1])]
         st.dataframe(filtered_companies)

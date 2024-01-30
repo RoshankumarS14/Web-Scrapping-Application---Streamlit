@@ -74,7 +74,7 @@ if st.session_state["analyze"]:
     with c2:
         st.subheader("Companies")
         company_counts = pd.DataFrame(df["companyName"].value_counts())
-        range = st.slider("Select range for count of companies",company_counts["count"].min(),company_counts["count"].max(),(company_counts["count"].min(),company_counts["count"].max()))
+        st.session_state["range"] = st.slider("Select range for count of companies",company_counts["count"].min(),company_counts["count"].max(),(company_counts["count"].min(),company_counts["count"].max()))
         st.dataframe(company_counts)
                                       
     

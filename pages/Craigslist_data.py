@@ -24,5 +24,5 @@ st.subheader("Posted Date")
 st.write(df[df["Title"]==st.session_state["job"]]["date"].values[0])
 
 st.subheader("Description")
-description = df[df["Title"]==st.session_state["job"]]["Meta Data"].values[0].replace('\n', '<br>').replace("$","")
+description = df[df["Title"]==st.session_state["job"]]["Meta Data"].values[0].replace('\n', '<br>').replace("$","").replace("\n","")
 st.markdown(description,unsafe_allow_html=True)

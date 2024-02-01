@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-df = pd.read_csv("Sample (Craigslist).csv")
+df = pd.read_csv("Sample data (Craigslist).csv")
 
 if "job" not in st.session_state:
     st.session_state["job"] = ""

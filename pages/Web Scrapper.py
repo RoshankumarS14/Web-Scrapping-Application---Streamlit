@@ -43,7 +43,7 @@ if st.session_state["Scrape"]:
             print(f"Error: {response.status_code}")
             print(response.text)
     jobs_data = pd.DataFrame([i for j in jobs_list for i in j])
-    jobs_data.drop(["totalJobs","jobDescription"],axis=1,inplace=True)
+    # jobs_data.drop(["totalJobs","jobDescription"],axis=1,inplace=True)
     st.session_state["Save_Button"] = True
 
 if st.session_state["Save_Button"]:
